@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,url}
+\usepackage{fullpage}
+
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{observation}{Observation}
+
+
+\newenvironment{proof}{\noindent{\em Proof.} \hspace*{1mm}}{
+	\hspace*{\fill} $\Box$ }
+\newenvironment{proof_of}[1]{\noindent {\bf Proof of #1:}
+	\hspace*{1mm}}{\hspace*{\fill} $\Box$ }
+\newenvironment{proof_claim}{\begin{quotation} \noindent}{
+	\hspace*{\fill} $\diamond$ \end{quotation}}
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+     	 \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{Scribed by YOUR NAME}{}{#3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\begin{document}
+\handout{1}{July 1, 2013}{Lecture 1, Part 1}
+In this class we talked about ....
+
+\section{Definitions}
+
+Normal-form games are defined as follows.
+
+\begin{definition}\label{def:normal}
+...
+\end{definition}
+
+\begin{theorem}\label{thm:test}
+Normal-form games are cool.
+\end{theorem}
+\begin{proof}
+Thus Theorem \ref{thm:test} holds.
+\end{proof}
+
+\begin{table}[hbtp]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    Left & 0,1 \\ \hline
+    Right & 1,0 \\ \hline
+  \end{tabular}
+  \caption{A table}\label{tab:1}
+\end{table}
+
+\paragraph{Remark.}...
+
+%\begin{figure}
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=0.3\textwidth]{x.pdf}\\
+%  \caption{A figure}\label{fig:1}
+%\end{figure}
+
+
+\bibliographystyle{agsm}
+
+\begin{thebibliography}{99}
+
+\bibitem{OR94}{M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.}
+
+\bibitem{NRTV07}{N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)}
+    
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
