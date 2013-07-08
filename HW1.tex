@@ -1,0 +1,194 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,url}
+
+% Old Stuff
+%%\oddsidemargin=0.15in
+%%\evensidemargin=0.15in
+%%\topmargin=-.5in
+%%\textheight=9in
+%%\textwidth=6.25in
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+         \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{2012 ACM Class 5120309027 Huang Zen}{}{#3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\newenvironment{proof}{\noindent{\em Proof.} \hspace*{1mm}}{
+\hspace*{\fill} $\Box$ }
+
+\begin{document}
+\handout{1}{July 5, 2013}{Problem Set 1}
+
+\paragraph{Problem 1} (No collaborator.)
+\begin{itemize}
+\item[(a)]
+There is particular no pure Nash equilibrium. However there is a unique mixed
+Nash equilibrium where the two players both choose their three actions
+in equal probability.
+\\
+\begin{proof}\\
+First we show that the mixed strategy profile
+$\big((\frac{1}{3},\frac{1}{3},\frac{1}{3}),(\frac{1}{3},\frac{1}{3},\frac{1}{3})\big)$
+is a NE. Given one's strategy with
+$\delta_1=(\frac{1}{3},\frac{1}{3},\frac{1}{3})$, then the utility of
+another player would be $u_2 = \sum(\frac{1}{3}p_i - \frac{1}{3}p_i) =
+0$, so any mixed strategy for player2 is a best response. Then
+particularly the one with $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})$ is
+a best mixed response, for both the players.
+\\
+Then we show that there's only one such mixed NE. Since the R-P-C game
+is Zero-Sum, when one player's strategy is not $(\frac{1}{3},
+\frac{1}{3}, \frac{1}{3})$, the other player would be able to choose
+his strategy so that $u_2>0$, for instance put all probability in the
+action which beats the other's most likely action. And while the same
+for player1 can choose $u_1>0$, since $u_1+u_2=0$, there can't be
+another mixed NE.
+\end{proof}
+
+\item[(b)]
+A mixed NE is
+$\big((\frac{2}{3},\frac{1}{3}),(\frac{1}{3},\frac{2}{3})\big)$.
+\\
+\begin{proof}\\
+Given player1's strategy with $\sigma_1 = (\frac{2}{3},
+\frac{1}{3})$. Let $\sigma_2$ be $(p, q)$. Then $u_2 = 1\frac{2}{3}p +
+2\frac{1}{3}q = \frac{2}{3}(p + q) = \frac{2}{3}$, so any strategy of
+player 2 is a best mixed response, particularly the one with $\sigma_2
+= (\frac{1}{3}, \frac{2}{3})$ is. By symmetry, this is true for
+player 2 either.
+\end{proof}
+
+\item[(c)]
+Obviously there are two pure NE in BoS with both B or both S. As (b) shows there's another mixed
+NE. We prove this is the only mixed NE so that we have in total 3
+equilibrium.
+\\
+\begin{proof}\\
+Suppose player1 chooses some strategy $\sigma_1=(p, q)$. Suppose
+$p>\frac{2}{3}$. Then the best response for player2 would be
+$\sigma_2=(1,0)$. In that case the best response for player1 is
+$\sigma_1=(1,0)$, which is a pure NE counted. By symmetry, this is
+true for $p<\frac{2}{3}$. So
+$\big((\frac{2}{3},\frac{1}{3}),(\frac{1}{3},\frac{2}{3})\big)$ is the
+only mixed NE.
+\end{proof}
+
+\item[(d)]
+Two players each pick a positive number. The utility for each would be
+the number they choose. Obviously there's no NE since each can always
+find a better strategy by changing to a bigger number.
+
+\end{itemize}
+
+\bigskip
+
+\paragraph{Problem 2} (No collaborator.)
+\begin{itemize}
+\item[(a)]
+Formulate a first price auction as a normal form game.
+
+\begin{align*}
+N &= \{1, 2, 3, \cdots, n\} \\
+S &= N_+^n \\
+u_i &= \left\{ \begin{array}{ll}
+v_i - s_{max}  & s_i = s_{max} \text{ and } i < j
+\text{ if } s_j = s_{max}\\
+0 & \text{otherwise}
+\end{array} \right.
+\end{align*}
+
+Then if there is a NE, player 1 must  obtains the object.
+\\
+\begin{proof}\\
+If not, let player p$(p>1)$ be the one obtains the object. Then we
+have $s_1<s_k\leq v_k<v_1$. Then player can change his bid to at
+least $v_k$ to win the auction with non-zero utility.
+\end{proof}
+\\
+Then we find all the NE. As is shown before, any NE must have
+$s_{max}=s_1$. Also $s_{max}$ can't be lower than $v_2$, otherwise
+player 2 can change his bit to $v_2$ to rise the $s_{max}$.
+So any NE $S=(s_1,s_2,\cdots,s_n)$ follows:
+\begin{itemize}
+\item $v_1 \geq s_1 \geq v_2$
+\item $\forall j, s_j \leq s_1$
+\end{itemize}
+
+\item[(b)]
+Formulate weak dominance:
+
+A strategy $s_i$ weakly dominate $s_i'$ if $$\forall s_{-i}, u_i(s_i,
+s_{-i}) \geq u_i(s_i', s_{-i})$$ and a strategy is weakly dominant if
+it weakly dominate any other strategies.
+\\
+In a second price auction the bid $v_i$ of any player i is a weakly
+dominant strategy.
+\begin{proof}\\
+We will show for player i, bidding $v_i$ is a weak dominance. Let
+$s_i'$ be another bid.In the case $\displaystyle \max_{\substack{j\neq
+    i}}s_j \geq v_i$, then with $s_i'$, player i either loses the
+object or get non-positive utility. In another case $\displaystyle
+\max_{\substack{j\neq i}}s_j<v_i$, player i either loses the object or
+wins with the same utility as $s_i$ does.
+\end{proof}\\
+ Finally, let's consider a equilibriam in which the winner is not
+ player 1. Let $N=3$.
+$$v_1 = 3, v_2 = 2, v_3 = 1$$
+$$s_1 = 1, s_2 = 100, s_3 = 2$$
+It is indeed a NE and in this case player 2 wins the object.
+\end{itemize}
+
+\bigskip
+
+\paragraph{Problem 3} (No collaborator.)
+In the first iteration, all numbers in $[34,100]$ will be eliminated,
+since they cannot be 
+$\frac{1}{3}$ of the avarage number. Similarly, the following
+sequence of elimination will
+be $[12,33],[5,12],[3,5],[2,3]$ and what is
+left is $1$.
+
+
+\bibliographystyle{agsm}
+
+\begin{thebibliography}{99}
+
+\bibitem{OR94}{M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.}
+
+\bibitem{NRTV07}{N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)}
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+

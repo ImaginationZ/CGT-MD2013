@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,url}
+\usepackage{fullpage}
+
+
+% Old Stuff
+%%\oddsidemargin=0.15in
+%%\evensidemargin=0.15in
+%%\topmargin=-.5in
+%%\textheight=9in
+%%\textwidth=6.25in
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+     	 \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{Instructor:
+Jing Chen}{Teaching Assistant: Tao Xiao}{Handout #1: #3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\begin{document}
+\handout{3}{July 3, 2013}{Problem Set 2}
+
+%This course is an undergraduate introduction to computational game theory, with emphasis on mechanism design.
+
+\textbf{Due by Wednesday, July 10, 2pm.}
+
+\paragraph{Problem 1 (10pt).} The normal-form game below has three players. Player 1 chooses rows, player 2 chooses columns, and player 3 chooses matrices. We only indicate player 3's utility. Show that action $D$ is not a best response for player 3 to any independent belief about his opponents' plays (i.e., mixed strategies for players 1 and 2), but that $D$ is not strictly dominated.
+\begin{center}
+\begin{tabular}{c|c|c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\ L\ $} & \multicolumn{1}{c}{$\ R\ $}  \\ \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $U$                  & 9                     & 0                      \\ [1ex] \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $D$                  & 0                     & 0                      \\ [1ex] \cline{2-3}
+\multicolumn{3}{c}{}                                                  \\ [-2ex]
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{$A$} \\
+\end{tabular}
+$\quad\quad$
+\begin{tabular}{c|c|c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\ L\ $} & \multicolumn{1}{c}{$\ R\ $}  \\ \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $U$                  & 0                     & 9                      \\ [1ex] \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $D$                  & 9                     & 0                      \\ [1ex] \cline{2-3}
+\multicolumn{3}{c}{}                                                  \\ [-2ex]
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{$B$} \\
+\end{tabular}
+$\quad\quad$
+\begin{tabular}{c|c|c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\ L\ $} & \multicolumn{1}{c}{$\ R\ $}  \\ \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $U$                  & 0                     & 0                      \\ [1ex] \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $D$                  & 0                     & 9                      \\ [1ex] \cline{2-3}
+\multicolumn{3}{c}{}                                                  \\ [-2ex]
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{$C$} \\
+\end{tabular}
+$\quad\quad$
+\begin{tabular}{c|c|c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\ L\ $} & \multicolumn{1}{c}{$\ R\ $}  \\ \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $U$                  & 6                     & 0                      \\ [1ex] \cline{2-3}
+ & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+  $D$                  & 0                     & 6                      \\ [1ex] \cline{2-3}
+\multicolumn{3}{c}{}                                                  \\ [-2ex]
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{$D$} \\
+\end{tabular}
+\end{center}
+
+\paragraph{Problem 2 (10pt).} (OR94, Exercise 99.1.) Give an example of an infinite horizon game for which the one deviation property does not hold.
+
+\paragraph{Problem 3 (10pt).} The Pirate game.
+
+There are 5 rational pirates, $A, B, C, D$ and $E$. They find 100 gold coins. They must decide how to distribute them.
+The pirates have a strict order of seniority: $A$ is superior to $B$, who is superior to $C$, who is superior to $D$, who is superior to $E$.
+The pirate world's rules of distribution are thus: that the most senior pirate should propose a distribution of coins. The pirates, including the proposer, then vote on whether to accept this distribution. If the proposed allocation is approved by a majority or a tie vote (e.g., 2 out of 4 approve), it happens. If not, the proposer is thrown overboard from the pirate ship and dies, and the next most senior pirate makes a new proposal to begin the system again.
+
+The pirates' preferences about the outcomes are as follows. First of all, each pirate wants to survive (say being thrown overboard gives him utility $-\infty$). Second, given survival, each pirate wants to maximize the number of gold coins he receives. Third, each pirate would prefer to throw another overboard, if all other results would otherwise be equal (e.g., if $D$ can get 1 coin from either $B$ or $C$, he prefers to throw $B$ overboard and get the coin from $C$).
+The pirates behave independently.
+
+Solve this game using backward induction. What is the final distribution of the coins?
+%
+%\paragraph{Problem 2 (10pt).} %122ps.pdf 5
+%Consider the following two-state game. In the first stage, player 1 chooses $a\in [0,3]$ and pays player 2 $a/9$ (so that player 1 gets a utility of $-a/9$ and player 2 gets a utility of $a/9$. In the second stage, players 1 and 2 play a simultaneous move game which provides them with the additional utility shown below. What is the subgame perfect equilibrium? What is player 1's equilibrium utility?
+%
+%\begin{center}
+%\begin{tabular}{c|c|c|}
+%  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+%\multicolumn{1}{c}{} & \multicolumn{1}{c}{$\ L\ $} & \multicolumn{1}{c}{$\ R\ $}  \\ \cline{2-3}
+% & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+%  $U$                  & $1+a, 0$                     & $0, 1$                     \\ [1ex] \cline{2-3}
+% & \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{}                     \\ [-1.5ex]
+%  $D$                  & $0, 1$                     & $1, 0$                     \\ [1ex] \cline{2-3}
+%\end{tabular}
+%\end{center}
+
+%M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.
+%
+%N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)
+
+\end{document}
+
+
+
+
+
+
+
+
