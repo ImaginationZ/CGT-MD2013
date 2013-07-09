@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,url}
+
+% Old Stuff
+%%\oddsidemargin=0.15in
+%%\evensidemargin=0.15in
+%%\topmargin=-.5in
+%%\textheight=9in
+%%\textwidth=6.25in
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+         \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{2012 ACM Class 5120309027 Huang Zen}{}{#3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\newenvironment{proof}{\noindent{\em Proof.} \hspace*{1mm}}{
+\hspace*{\fill} $\Box$ }
+
+\begin{document}
+\handout{1}{July 8, 2013}{Problem Set 2}
+
+\paragraph{Problem 1} (No collaborator.)
+\\
+Let $p$ be the probability player 1 chooses Up, and $q$ be the
+probability player 2 chooses Left. Thus the four cases of strategy of
+the two players would be with probability $pq$, $p(1-q)$, $(1-p)q$ and
+$(1-p)(1-q)$.
+\\
+Then we have $u_A=9pq$, $u_B=9p+9q-18pq$, $u_C=9-9p-9q+9pq$,
+$u_D=6-6p-6q+12pq$. There's no solution for $\{u_A\leq u_D, u_B\leq
+  u_D, u_C\leq u_D\}$ with $p,q\in [0,1]$, so D is not a best response
+for player 3.
+\\
+However there's also no solution for $\{u_A>u_D, u_B>u_D,
+  u_C>u_D\}$ with $p,q\in [0,1]$, so D is not strictly dominated.
+\bigskip
+
+\paragraph{Problem 2} (No collaborator.)
+\\
+Consider a one-player game. The player will have two choices namely
+$y$\&$n$ each time. When he chooses $n$ the game ends and he gets nothing;
+if he chooses $y$ the game continues to the next choices between $y$ and $n$
+so if he continously chooses $y$, the game will come to an infinite
+history and give that history a positive utility.
+\\
+Now let's consider one strategy that on every occasion the player
+chooses $n$. Obviously the player always gets nothing and the strategy
+is not a SPE, even not a NE. However it does follow the condition in
+one deviation property since that when the only deviation happens, the player just jumps to another
+choice and chooses $n$ finally.
+
+\bigskip
+
+\paragraph{Problem 3} (No collaborator.)
+\\
+Notice that any pirate will always vote for himself. And if one cannot
+get more coins through voting, he will not vote for the current pirate.
+\\
+First consider the situation that there are only two pirates, say
+$D$ and $E$, $D$ takes all coins. 
+\\
+Then three pirates, say $C$, $D$ and $E$. If $C$ is thrown overboard $D$ can get all the
+coins, so $D$ will not vote. If $E$ always gets nothing, $E$ prefers to throw $C$ overboard, so $C$ will
+give $E$ one coin and himself 99 coins.
+\\
+Then four pirates, say $B$ to $E$. $C$, $D$ and $E$
+will vote only if they get at least 100, 1 and 2 coin(s). So $B$ will give $D$ 1 coin and himself 99 coins.
+\\
+Finally five pirates. $B$, $C$, $D$ and $E$ will
+vote only if they get at least 100, 1, 2 and 1 coin(s). So $A$
+will give himself 98 coins and give $C$ and $E$ both 1 coin.
+\\
+The final distribution of coins will be $(98, 0, 1, 0, 1)$.
+
+\bibliographystyle{agsm}
+
+\begin{thebibliography}{99}
+
+\bibitem{OR94}{M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.}
+
+\bibitem{NRTV07}{N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)}
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
