@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,url}
+
+% Old Stuff
+%%\oddsidemargin=0.15in
+%%\evensidemargin=0.15in
+%%\topmargin=-.5in
+%%\textheight=9in
+%%\textwidth=6.25in
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+         \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{2012 ACM Class 5120309027 Huang Zen}{}{#3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\newenvironment{proof}{\noindent{\em Proof.} \hspace*{1mm}}{
+\hspace*{\fill} $\Box$ }
+
+\begin{document}
+\handout{1}{July 15, 2013}{Problem Set 4}
+
+\paragraph{Problem 1} (No collaborator.)
+\\
+obviously $\sigma_i=\frac{1}{2}H+\frac{1}{2}T$ for each player $i$ is a Nash. 
+In which way,
+each player makes the other indifferent between choosing heads or tails,
+so neither player has an incentive to try another strategy.
+\\
+Now given positive $\epsilon$, lets consider a strategy namely $\sigma'$:
+$$
+\sigma'=\left\{\begin{array}{ll}
+\displaystyle(\frac{1}{2}+\frac{\epsilon}{20})H+(\frac{1}{2}-\frac{\epsilon}{20})T & i=1,...,5\\ \\
+\displaystyle \frac{1}{2}H+\frac{1}{2}T &i=6	
+\end{array} \right .
+$$
+We found that
+\begin{align*}
+&u_i(\sigma)=0 \tag{$i=1,...6$}\\
+&|u_i(H,\sigma'_6)|=|u_i(T,\sigma_6)|=0\leq \epsilon \tag{$i=1,...,5$}\\
+&|u_6((\sigma'_i),H)|=|5((\frac{1}{2}-\frac{\epsilon}{20})-(\frac{1}{2}+\frac{\epsilon}{20}))|
+	=|-\frac{\epsilon}{2}|\leq \epsilon\\
+&|u_6((\sigma'_i),T)|=|5((\frac{1}{2}+\frac{\epsilon}{20})-(\frac{1}{2}-\frac{\epsilon}{20}))|
+	=|\frac{\epsilon}{2}|\leq \epsilon
+\end{align*}
+However $\sigma'$ is not a Nash since each player can always avoid receiving negative utility,
+so $\sigma'$ yields a $\epsilon$-Nash equillibrium.
+
+\bigskip
+
+\paragraph{Problem 2} (No collaborator.)
+\
+W.L.G, 
+take player 6 as the root and all other players be the children and terminated nodes.
+\\
+suppose player $6$ choose the strategy $\sigma = pH + qT$, $0 \leq p,q \leq 1$,$p+q=1$.
+Player i chooses strategy $(p_iH,q_iH)$.
+If $p=q$, any strategy for player $i$ is a best response.
+If $p>q$, best response for other players would be $(1H,0T)$,
+If $p<q$, the best response would be $(0H,1T)$.
+\\
+So the  table passed from the children is 
+$$
+T_i(p_i H+q_i T,pH+qT)=\left\{\begin{array}{ll}
+1 & p=q\mbox{ or }p>q, p_i=1\mbox{ or }p<q, q_i=1\\
+0 & {otherwise}
+\end{array}\right .
+$$
+We have 
+$$u_6(p_iH+q_iH,pH+qH)=p\sum_{i=1}^{5}q_i+q\sum_{i=1}^{5}p_i=(1-2p)(2\sum_{i=1}^{5}p_i-5)$$
+For player $6$, $p\not=q$ is obvious not a best response to his children's choices
+since all other players can choose one pure strategy and drop player $6$'s utility to negative.
+And when $p=q$, it's a best response only if $\sum_{i=1}^{5}p_i=\frac{5}{2}$.
+So the table at the root is
+$$
+T_6(pH+qT)=\left\{\begin{array}{ll}
+	1 & p=q\\
+	0 & \mbox{otherwise}
+\end{array}\right .
+$$
+while the witness list at the root is 
+$$ \sum_{i=1}^{5}p_i=\frac{5}{2}$$
+This yields NEs with one player chooses equal probability $H$ and $T$, others chooses equal sum of probability of $H$ and $T$.
+
+\bigskip
+
+\paragraph{Problem 3} (No collaborator.)\\
+\begin{proof}
+In mixed strategy $\sigma$ yielded from strategy set $S$, let $p_i$ be the probability of $\sigma_i$, let $p=\displaystyle \sum_{i=1}^k \lambda_i p_i$ be the convex combination of $p_i$.
+\\
+$\forall i, \forall b \in S_i, \forall b' \in S_i \quad T=\{s \ |s\in S, \ s_i=b\}$
+\begin{align*}
+\displaystyle
+\mathbb{E}_{s \sim \sigma |_{s_i=b}} u_i(s)
+&=\sum_{s \in T} \frac{p(s)}{\displaystyle \sum_{s' \in S} p(s')} u_i(s)\\
+&=\sum_{s \in T} \frac{\displaystyle\sum_{j=1}^k \lambda_j p_j(s)}{\displaystyle \sum_{s' \in S} p(s')} u_i(s)\\
+&=\displaystyle\sum_{j=1}^k \lambda_j \frac{\displaystyle \sum_{s' \in S} p_j(s')}{\displaystyle \sum_{s' \in S} p(s')} \sum_{s \in T}  \frac{p_j(s)}{\displaystyle \sum_{s' \in S} p_j(s')} u_i(s)\\
+&=\displaystyle\sum_{j=1}^k \lambda_j \frac{\displaystyle \sum_{s' \in S} p_j(s')}{\displaystyle \sum_{s' \in S} p(s')} \mathbb{E}_{s \sim \sigma_j |_{s_i=b}} u_i(s)\\
+&\ge \displaystyle\sum_{j=1}^k \lambda_j \frac{\displaystyle \sum_{s' \in S} p_j(s')}{\displaystyle \sum_{s' \in S} p(s')} \mathbb{E}_{s \sim \sigma_j |_{s_i=b}} u_i(b', s_{-i})\\
+&=\mathbb{E}_{s \sim \sigma |_{s_i=b}} u_i(b', s_{-i}) \mbox{ (by symmetry)}
+\end{align*}
+So
+$$\mathbb{E}_{s \sim \sigma |_{s_i=b}} u_i(s) \ge \mathbb{E}_{s \sim \sigma |_{s_i=b}} u_i(b', s)$$
+
+So for any finite game $G$, any finite convex combination of CEs is still a CE of $G$.
+\end{proof}
+
+
+\bibliographystyle{agsm}
+
+\begin{thebibliography}{99}
+
+\bibitem{OR94}{M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.}
+
+\bibitem{NRTV07}{N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)}
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
