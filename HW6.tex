@@ -1,0 +1,194 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amsmath,amssymb,graphicx,relsize,url,charter}
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\newcommand{\heading}[5]{
+   \renewcommand{\thepage}{#1-\arabic{page}}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.2in { {\bf CS390 Computational Game Theory and Mechanism Design}
+     	 \hfill #2 }
+       \vspace{4mm}
+       \hbox to 6.2in { {\Large \hfill #5  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.2in { {\it #3 \hfill #4} }
+      }
+   }
+   \end{center}
+   \vspace*{4mm}
+}
+
+\newcommand{\handout}[3]{\heading{#1}{#2}{2012 ACM Class 5120309027 Huang Zen}{}{#3}}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\newenvironment{proof}{\noindent{\em Proof.} \hspace*{1mm}}{
+\hspace*{\fill} $\Box$ }
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{observation}{Observation}
+
+\begin{document}
+\handout{1}{July 22, 2013}{Problem Set 6}
+
+\paragraph{Problem 1} (No collaborator.)
+\\
+\begin{proof}
+\begin{enumerate}
+\item[1.]
+From
+$
+\left\{\begin{array}{l}
+u_1(\theta,a)>u_1(\theta,c)\\
+u_1(\theta',c)>u_1(\theta',a)
+\end{array}\right .
+$
+we have $L(\theta,a)\supset L(\theta',a)$.
+By symmetry we also have $L(\theta',b)\supset L(\theta,b)$.
+So $f$ is monotone.
+
+\item[2.]
+$c\notin f(\theta),c\notin f(\theta')$, so $f$ do not satisfy NVP.
+
+\item[3.]
+Suppose there exists a mechanism $M$ which fully Nash-implements $f$.
+From $o(\theta,pNE(M))=f(\theta)$,
+we have there exist a column that the outcomes are all a.
+and from $o(\theta',pNE(M))=f(\theta')$,
+then there exist a row that the outcomes are all b.
+That leads to $a=b$, what is contradiction.
+\end{enumerate}
+\end{proof}
+
+\bigskip
+
+\paragraph{Problem 2} (No collaborator.)
+\\
+\begin{claim}
+\end{claim}
+\begin{proof}
+
+Let $\displaystyle A^{OPT}=\underset{A'}{argmax}\sum_{i}v_i(A_i')$, 
+suppose $A_i^{OPT}=\emptyset$. Then
+$$P_i=\underset{A' }{\max}\sum_{j\not = i}v_j(A_j')-\sum_{j \not = i}v_j(A_j^{OPT})=0$$
+So that we have claim 1.
+
+\end{proof}
+
+\begin{claim}
+\end{claim}
+\begin{proof}
+
+Let $\displaystyle A^{OPT}=\underset{A'}{argmax}\sum_{i}v_i(A_i')$, 
+we have
+$$P_i=\underset{A' }{\max}\sum_{j\not = i}v_j(A_j')-\sum_{j \not = i}v_j(A_j^{OPT})$$
+$\forall i\in N, \theta_i\in \Theta_i$, and $v_{-i}\in \Theta_{-i}$,  where $v_i=\theta_i$, we have
+\begin{align*}
+u_i(\theta_i,VCG(\theta_i,v_{-i}))&=\theta_i(A_i)-P_i\\
+&=v_i(A_i)-P_i \\
+&=v_i(A_i)+\sum_{j\neq i}v_j(A_j^{OPT})-\underset{A'}{\max}\sum_{j\neq i}v_j(A_j')\\
+&=\sum_{j}v_j(A_j^{OPT})-\underset{A'}{\max}\sum_{j\neq i}v_j(A_j')\\
+&\geq 0 
+\end{align*}
+
+\end{proof}
+
+\bigskip
+
+\paragraph{Problem 3} (No collaborator.)
+\\
+
+\begin{enumerate}
+
+\item[(a)]
+
+\begin{proof}
+First we show that $M$ implements $F$.
+$$
+M(\theta)=\left\{\begin{array}{ll}
+(0,p) & \sum_i\theta_i<c\\ 
+(1,p) & \sum_i\theta_i\geq c
+	\end{array}\right .\subseteq F(\theta)
+$$
+So  $M$ implements $F$. 
+\\
+Next we show that $M$ is DST, which means $\forall\theta,i$, $\theta_i$ is a dominant strategy. 
+$\forall v_{-i}$
+\begin{enumerate}
+\item[(1)] If $\displaystyle\sum_{j\neq i}v_j+\theta_i <c$
+
+\begin{enumerate}
+\item[i.]
+If $\displaystyle\sum_{j}v_j<c$, then $u_i(\theta_i,M(\theta_i,v_{-i}))=u_i(\theta_i,M(v_i,v_{-i}))=0$.
+\item[ii.]
+If $\displaystyle\sum_{j}v_j\geq c$, then 
+$\left\{\begin{array}{l}
+		u_i(\theta_i,M(\theta_i,v_{-i}))=0\\
+		u_i(\theta_i,M(v_i,v_{-i}))=\sum_{j\neq i}v_j+\theta_i-c\leq 0
+\end{array}\right .
+$.
+\end{enumerate}
+
+\item[(2)] If $\displaystyle\sum_{j\neq i}v_j+\theta_i\geq c$
+\begin{enumerate}
+\item[i.]
+If $\displaystyle\sum_{j}v_j<c$, then
+$\left\{\begin{array}{l}
+		u_i(\theta_i,M(\theta_i,v_{-i}))=\sum_{j\neq i}v_j+\theta_i-c\geq 0\\
+		u_i(\theta_i,M(v_i,v_{-i}))=0
+\end{array}\right .
+$.
+\item[ii.]
+If $\displaystyle\sum_{j}v_j\geq c$, then
+$u_i(\theta_i,M(\theta_i,v_{-i}))=u_i(\theta_i,M(v_i,v_{-i}))=\sum_{j\neq i}v_j+\theta_i-c$.
+\end{enumerate}
+
+\end{enumerate}
+
+To all the above cases, 
+$u_i(\theta_i,M(\theta_i,v_{-i}))\geq u_i(\theta_i,M(v_i,v_{-i}))$,
+so that  $\forall\theta,i$, $\theta_i$ is a dominant strategy.
+\\
+Thus we have Groves mechanism DST-implements $F$.
+\end{proof}
+
+\item[(b)]
+
+$N=2,c=1,\theta_1=\theta_2=10$, the revenue is -18. 
+
+\end{enumerate}
+
+
+\bibliographystyle{agsm}
+
+\begin{thebibliography}{99}
+
+\bibitem{OR94}{M. J. Osborne and A. Rubinstein. {\em A course in game theory.} MIT Press, 1994.}
+
+\bibitem{NRTV07}{N. Nisan, T. Roughgarden, E. Tardos, and V. Vazirani (eds). {\em Algorithmic game theory.} Cambridge University Press, 2007. (Available at \url{http://www.cambridge.org/journals/nisan/downloads/Nisan_Non-printable.pdf}.)}
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
